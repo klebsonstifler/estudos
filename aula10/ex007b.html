@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idade</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Somador de Idade</h1>
+        <div class="nasc"> <!--Nascimento-->
+            <input type="number" name="nasc" id="nasc">
+        </div>
+        <div class="datahoje"> <!--Data Atual-->
+            <input type="number" name="datahoje" id="datahoje">
+        </div>
+        <div id="res"> <!--Resultado-->
+            Idade
+        </div>
+        <div class="soma"> <!--Botão para Somar-->
+            <input type="button" value="Somar" onclick="somar">
+        </div>
+    <script>
+        function somar() {
+            var txtnasc = window.document.chi
+            var txtdatahj = window.document.getElementById('datahoje')
+            var res = window.document.getElementById('res')
+            var n1 = Number(txtnasc.value)
+            var n2 = Number(txtdatahj.value)
+            var s = n2 - n1
+            res.innerHTML = `Você tem ${s} anos`
+        }
+    </script>
+</body>
+</html>
