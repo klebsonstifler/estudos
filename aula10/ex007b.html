@@ -4,35 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idade</title>
+    <title>Calcular Idade</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,800&display=swap'); /* Fonte titulo */
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,800&family=Raleway:ital@1&display=swap'); /* Fonte idade */
 
+        :root {
+            --font-idade :'Raleway', sans-serif;
+            --font-titulo:'Exo 2', sans-serif;
+            --color1:#C2B827;
+            --color2:#736F39;
+        }
+        body {
+            height: 97vh;
+            width: 97vw;
+            background: url(imagens/image.jpg)  center center no-repeat fixed;
+            background-size: cover;
+        }
+        .container {
+            position: absolute;
+            transform: translate(90%, 30%);
+            border: ridge 10px rgb(226, 199, 76);
+            width: 45vw;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Somador de Idade</h1>
-        <div class="nasc"> <!--Nascimento-->
-            <input type="number" name="nasc" id="nasc">
+    <div class="container">
+        <div>
+            <h1>Calculadora de Idade</h1>
         </div>
-        <div class="datahoje"> <!--Data Atual-->
-            <input type="number" name="datahoje" id="datahoje">
+        <div class="nascimento">
+            <h1>Ano de Nascimento</h1>
+            <input type="number" name="d_nasc" id="d_nasc"> 
         </div>
-        <div id="res"> <!--Resultado-->
-            Idade
+        <div class="dataatual">
+            <h1>Ano Atual</h1>
+            <input type="number" name="d_atual" id="d_atual">
         </div>
-        <div class="soma"> <!--Botão para Somar-->
-            <input type="button" value="Somar" onclick="somar">
+        <div class="calcular">
+            <input type="button" value="Calcular">
         </div>
-    <script>
-        function somar() {
-            var txtnasc = window.document.chi
-            var txtdatahj = window.document.getElementById('datahoje')
-            var res = window.document.getElementById('res')
-            var n1 = Number(txtnasc.value)
-            var n2 = Number(txtdatahj.value)
-            var s = n2 - n1
-            res.innerHTML = `Você tem ${s} anos`
-        }
-    </script>
+        <div class="resposta">
+            <h1>Vamos descobrir sua Idade!!!</h1>
+        </div>
+    </div>
+    
 </body>
 </html>
