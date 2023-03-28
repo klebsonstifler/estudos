@@ -18,38 +18,100 @@
         body {
             height: 97vh;
             width: 97vw;
-            background: url(imagens/image.jpg)  center center no-repeat fixed;
+            background: black center center no-repeat fixed;
             background-size: cover;
         }
         .container {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto auto auto;
+            gap: 3px;
             position: absolute;
-            transform: translate(90%, 30%);
+            transform: translate(90%, 20%);
             border: ridge 10px rgb(226, 199, 76);
             width: 45vw;
             padding: 10px;
+        }
+        .titulo{
+            font-family: var(--font-titulo);
+            text-align: center;
+            grid-column: span 3;
+            color: var(--color1);
+        
+        }
+        .nascimento{
+            text-align: center;
+            grid-area: 1 0 2 1;
+            font-family: var(--font-idade);
+            color: var(--color2);
+        }
+        #d_nasc{
+            width: 100px;
+            font-size: 25px;
+            text-align: center;
+        }
+        #d_atual{
+            width: 100px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .dataatual{
+            text-align: center;
+            grid-area: 1 1 2 2;
+            font-family: var(--font-idade);
+            color: var(--color2);
+            
+        }
+        .calcular{
+            text-align: center;          
+            grid-column: span 3;
+            grid-row: 2 3;
+        }
+        #calc{
+            font-size: 25px;
+            font-family: var(--font-titulo);
+            border-radius: 10px;
+        }
+
+        .res {
+            text-align: center;       
+            grid-column: span 3;
+            font-family: var(--font-idade);
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div>
+        <div class="titulo">
             <h1>Calculadora de Idade</h1>
         </div>
         <div class="nascimento">
             <h1>Ano de Nascimento</h1>
-            <input type="number" name="d_nasc" id="d_nasc"> 
+            <input type="number" name="d_nasc" id="d_nasc">
         </div>
         <div class="dataatual">
             <h1>Ano Atual</h1>
             <input type="number" name="d_atual" id="d_atual">
         </div>
         <div class="calcular">
-            <input type="button" value="Calcular">
+            <input type="button" value="Calcular" onclick="somar()" id="calc">
         </div>
-        <div class="resposta">
-            <h1>Vamos descobrir sua Idade!!!</h1>
+        <div class="res">
+            <h1 id="resp">Vamos descobrir sua Idade!!!</h1>
         </div>
     </div>
-    
+    <script>
+        function somar() {
+
+            var tn1 = document.getElementById('d_nasc')
+            var tn2 = document.getElementById('d_atual')
+            var res = document.getElementById('resp')
+            var n1 = Number(tn1.value)
+            var n2 = Number(tn2.value)
+            var s = n2 - n1
+            resp.innerHTML = `A sua idade no ano de ${n2} é ${s}`
+        }
+    </script>
 </body>
 </html>
