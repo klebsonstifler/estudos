@@ -7,23 +7,12 @@
     <title>Hora do Dia</title>
     <style>
         body{
+            background-color: #120157;
+        }
+
+        header h1 {
+            color: #fff;
             text-align: center;
-            background-color: #ffffff;
-        }
-
-        #txthora {
-            position: relative;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bolder;
-            top: 10px;
-        }
-
-        #imagem {
-            position: relative;
-            width: 300px;
-            border-radius: 50%;
-            top: 20px;
-
         }
 
         section {
@@ -39,6 +28,7 @@
             width: 350px;
             margin: auto;
             border-radius: 3px;
+            text-align: center;
         }
         
         footer a {
@@ -49,43 +39,30 @@
 
     </style>
 </head>
-<body id="corpo">
+<body>
     <header>
-        <h1 id="titulo">Hora do Dia</h1>
+        <h1 id="titulo">Verificador de Idade</h1>
     </header>
     <section>
-        <p id="txthora">
-            Agora são exatamente 6:00 horas
-        </p>
-        <p>
-            <img src="img/bomdia.webp" alt="fotodia" id="imagem">
-        </p>
+        <div class="perguntas">
+            <p>Ano de Nascimento <span><input type="date" name="" id=""></span></p>
+            <p>Sexo 
+                <span>
+                    <input type="radio" name="sex" id="masc">Masculino 
+                    <input type="radio" name="sex" id="fem">Feminino
+                </span>
+            </p>
+            <button>Verificar</button>
+        </div>
+        <div class="resultado">
+            <p>Preencha os dados acima para ver o resultado!</p>
+        </div>
     </section>
     <footer>
         <p><img src="img/github.svg" alt="github"><a href="https://github.com/klebsonstifler" target="_blank">Klebson Almeida Oliveira</a></p>
     </footer>
 </body>
 <script>
-    var agora = new Date()
-    var hora = agora.getHours()
-    var minutos = agora.getMinutes()
-    txthora.innerText = `Agora são exatamente ${hora}:${minutos} horas`
-    if (minutos < 10 ) {
-        txthora.innerText = `Agora são exatamente ${hora}:0${minutos} horas`
-    }
-
-    if (hora >=6 && hora < 12) {
-        document.getElementById('imagem').src="img/bomdia.webp"
-        document.getElementById('corpo').style.backgroundColor = "#A8E5EA"
-    } else if (hora >= 12 && hora < 18) {
-        document.getElementById('imagem').src="img/boatarde.webp"
-        document.getElementById('corpo').style.backgroundColor = "#e9a949"
-        document.getElementById('titulo').style.color = "#ffff"
-    } else {
-        document.getElementById('imagem').src="img/boanoite.webp"
-        document.getElementById('corpo').style.backgroundColor = "#120157"
-        document.getElementById('titulo').style.color = "#ffff"
-
-    }    
+    
 </script>
 </html>
