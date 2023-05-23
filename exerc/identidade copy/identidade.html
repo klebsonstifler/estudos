@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+        :root {
+            --font1 :'Poppins', sans-serif;
+        }
+        body{
+            background-color: #120157;
+        }
+
+        header h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        section { /* seção que contem os dados para verificar */
+            font-family: var(--font1);
+            font-weight: 500;
+            font-size: 0.9rem;
+            background-color: #fff;
+            width: 350px;
+            margin: auto;
+            border-radius: 3px;
+            padding: 2px 0px;
+        }
+
+        section p {
+            padding: 0px 10px;
+        }
+
+        section span input { /* sexo */
+            cursor: pointer;
+        }
+
+        section span input:hover{
+            transform: scale(110%);
+
+        }
+
+        #txtano {
+            width: 100px;
+            margin-left: 10px;
+            text-align: center;
+            font-family: var(--font1);
+        }
+
+        #verificar { /* botão verificar */
+            cursor: pointer;
+            font-family: var(--font1);
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 1px;
+            background-color: #120157;
+            width: 100px;
+            border-radius: 3px;
+            box-shadow: 1px 1px 1px black;
+        }
+
+        #verificar:hover{
+            background-color: #084a88;
+            transform: scale(105%);
+        }
+
+        .resultado { /* div com o resultado do verificador */
+            font-weight: bolder;
+            padding: 0px 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #ffff;
+            width: 350px;
+            margin: auto;
+            border-radius: 3px;
+            text-align: center;
+        }
+        
+        footer a {
+            text-decoration: none;
+            font-weight: bolder;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="titulo">Verificador de Idade</h1>
+    </header>
+    <section>
+        <div class="perguntas">
+            <p>Ano de Nascimento
+                <input type="text" name="txtano" id="txtano" maxlength="4" minlength="0">
+            </p>
+            <p>Sexo 
+                <span>
+                    <input type="radio" name="sex" id="masc">Masculino 
+                    <input type="radio" name="sex" id="fem">Feminino
+                </span>
+            </p>
+        </div>
+        <div class="resultado">
+            <button class="verificar" id="verificar" onclick="verif()">Verificar</button>
+            <p id="res">Preencha os dados acima para ver o resultado!</p>
+        </div>
+    </section>
+    <footer>
+        <p><img src="img/github.svg" alt="github"><a href="https://github.com/klebsonstifler" target="_blank">Klebson Almeida Oliveira</a></p>
+    </footer>
+</body>
+<script>
+    function verif() {
+        var data = new Date() //pega a data do sistema
+        var ano = data.getFullYear() //pega a ano atual
+        var fano = document.getElementById('txtano') // pega o ano informado pelo usuario
+        var res = document.querySelector('p#res') // seleciona o paragrafo abaixo do botão verificar
+        if (fano.value.length == 0 || Number(fano.value > ano)) { // condição verifica se tem valor digitado no input ano
+            window.alert('[ERRO] Verifique os dados e tente novamente')
+        } else {
+            var fsex = document.getElementsByName('sex')
+            const idade = ano - Number(fano.value)
+            var genero = ''
+            var img = document.createElement('img') // cria um img no html
+            img.setAttribute('id','foto') // define um ID para a imagem
+            img.style.width = '260px'
+            img.style.borderRadius = '50%'
+            if (fsex[0].checked) {
+                genero = 'Homem'
+
+                if (idade >= 0 && idade <= 12) { // criança
+                   img.setAttribute('src', 'img/garotoate12.jpg') 
+                } else if (idade > 12 && idade <= 18) {// adolescente
+                    img.setAttribute('src', 'img/ate18Masc.jpg')
+                } else if (idade > 18 && idade <= 35) { // Adulto
+                    img.setAttribute('src', 'img/ate35Masc.jpg')
+                } else if (idade > 35 && idade <= 60) { // Meia Idade
+                    img.setAttribute('src', 'img/ate60Masc.jpg')
+                } else if (idade > 60) { // Idoso
+                    img.setAttribute('src', 'img/mais60Masc.jpg')
+                }      
+            } else {
+                genero = 'Mulher'
+
+                if (idade >= 0 && idade <= 12) { // criança
+                   img.setAttribute('src', 'img/meninaate12.jpg') 
+                } else if (idade > 12 && idade <= 18) {// adolescente
+                    img.setAttribute('src', 'img/ate18Fem.jpg')
+                } else if (idade > 18 && idade <= 35) { // Adulto
+                    img.setAttribute('src', 'img/ate35Fem.jpg')
+                } else if (idade > 35 && idade <= 60) { // Meia Idade
+                    img.setAttribute('src', 'img/ate60Fem.jpg')
+                } else if (idade > 60) { // Idoso
+                    img.setAttribute('src', 'img/mais60Fem.jpg')
+                }      
+            }
+            res.innerHTML = `Detectamos ${genero}, você tem ou irá fazer ${idade} anos`
+            res.appendChild(img)
+        }
+
+    }
+</script>
+</html>
