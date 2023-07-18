@@ -7,20 +7,71 @@
     <title>Document</title>
 </head>
 <body>
-    Teste <br>
 
+    <div id="app">
+        {{ mensagem }} <br> <!-- interpola o atributo mensagem no data -->
+        Valor total: {{ valorTotal}} <br> <!-- interpola o valor total no data -->
+        Hobies: {{ hobbies[0]}} <br> <!-- recupera o valor dentro do array no indice 0 -->
+        Perfil: {{ perfil.nome }}, {{ perfil.cursos[0].nome }} <br> <!-- recupera o valor do objeto dentro do perfil no indice 0 do array 
+                                                                cursos e exibe o valor do nome dentro do objeto curso -->
+        {{ somar() }} <br>
+        {{ subtrair() }} <br>
+        {{ multiplicar() }} <br>
+        {{ dividir() }} <br>
+        {{ numeroAleatorio() }}
+
+    </div>
     
-
-    <div id="app"></div>
-    {{ mensagem }}
     <script>
 
         options = {
             el: '#app',
             data: { //variáveis / atributos reativos
-                mensagem: 'Primeiro template controlado pelo Vue'
+                mensagem: 'Primeiro template controlado pelo Vue', //string
+                valorTotal: 150.47, //numero
+                logado: true, //booleano
+                hobbies: [
+                    'dormir',
+                    'Colecionar vídeo games antigos',
+                    'Correr',
+                    'Trilhas'
+                ],
+                perfil: {
+                    nome: 'Klebson Stifler',
+                    site: 'klebsonstifler.net',
+                    Idade: 32,
+                    cursos: [
+                        {
+                            nome: 'JavaScript',
+                            cargaHoraria: '50 horas'
+                        },
+                        {
+                            nome: 'Vue',
+                            cargaHoraria: '50 horas'
+                        }
+                    ]
+                }
+            },
+            methods: {
+                somar: function somar() { // função convencional
+                    return 4 + 4;
+                },
+                subtrair: function() { // função anonima
+                    return 4 - 2;
+                },
+                multiplicar: () => { //arrow function
+                    return 4 * 2;
+                },
+                dividir() {
+                    return 4 / 2; //forma mais enxuta de definir os pares de chave/valor
+                },
+                numeroAleatorio() {
+                    return Math.random();
+                }
             }
         }
+
+        
 
         const vm = new Vue(options); //vm = ViewModel
 
